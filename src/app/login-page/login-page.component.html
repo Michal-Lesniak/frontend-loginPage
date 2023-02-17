@@ -1,23 +1,18 @@
-<div class="example-container">
-
-
-
+<div class="container">
+  <div class="box">
+    <h1 class="title">Login Page</h1>
     <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)] = "username" type="text"  placeholder="username">
-      </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your password</mat-label>
-      <input matInput  [(ngModel)] = "password" placeholder="password">
-      
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)] = "username" type="text"  placeholder="username">
     </mat-form-field>
-    <div>
-        <button type="submit" (click)="login()" >Login</button>
-    </div>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput  [(ngModel)] = "password" placeholder="password" type="password">
+    
+  </mat-form-field>
+  <button mat-raised-button (click)="login()">Sign In</button>
+  <button mat-raised-button (click)="createNewAccount()">Sign Up</button>
 
-
-  
-  
   </div>
+</div>

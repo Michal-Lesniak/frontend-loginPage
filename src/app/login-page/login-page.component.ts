@@ -25,6 +25,10 @@ export class LoginPageComponent {
           }
         });
       }
+
+      createNewAccount(){
+        this.router.navigate(["/sign-up"]);
+      }
     
 
 

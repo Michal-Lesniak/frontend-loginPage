@@ -1,0 +1,36 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../assets/abstract-uv-ultraviolet-light-composition.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    width: 400px;
+    border-radius: 20px;
+  }
+
+  mat-form-field{
+    width: 80%;
+  }
+  
+ 
+  mat-error {
+    color: red;
+  }
+
+.show-password-button{
+  background-color: transparent;
+  border:none;
+  margin-right: 5px;
+}
+
+ 

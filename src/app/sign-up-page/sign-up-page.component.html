@@ -1,0 +1,45 @@
+<div class="container">
+    <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" >
+        <mat-form-field>
+            <mat-label>Enter your Name</mat-label>
+            <input matInput placeholder="Name" formControlName="firstName">
+            <mat-error *ngIf="userForm.controls['firstName'].invalid">Field required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your Surname</mat-label>
+            <input matInput placeholder="Surname" formControlName="lastName">
+            <mat-error *ngIf="userForm.controls['lastName'].invalid">Field required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username">
+            <mat-error *ngIf="userForm.controls['username'].invalid">Field required.</mat-error>
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Enter your Password</mat-label>
+            <input [type]="hide_password_flag ? 'password' : 'text'" matInput placeholder="Password" formControlName="password" >
+            <button type="button" class="show-password-button" mat-icon-button matSuffix (click)="hide_password_flag = !hide_password_flag">
+                <mat-icon>{{ hide_password_flag ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
+            <mat-error *ngIf="userForm.controls['password'].hasError('required')">Field required.</mat-error>
+            <mat-error *ngIf="userForm.controls['password']">Password must be at least 8 chatacters long.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Repeat your Password</mat-label>
+            <input [type]="hide_repeat_password_flag ? 'password' : 'text' " matInput placeholder="Password" formControlName="passwordRepeat" type="password" required pattern="{{ userForm.value.password }}">
+            <button type="button" class="show-password-button" mat-icon-button matSuffix (click)=" hide_repeat_password_flag = ! hide_repeat_password_flag">
+                <mat-icon>{{  hide_repeat_password_flag ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
+            <mat-error *ngIf="userForm.controls['passwordRepeat'].hasError('required')">Field required. </mat-error>
+            <mat-error *ngIf="userForm.controls['passwordRepeat'].hasError('pattern')">Passwords do not match. </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="userForm.controls['email'].invalid">Field required.</mat-error>
+        </mat-form-field>
+        <button type="submit" [disabled]="!userForm.valid">Register</button>
+    </form>
+
+    
+</div>
