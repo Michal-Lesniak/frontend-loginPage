@@ -10,14 +10,15 @@ import { User } from '../user';
 export class ApiServiceService {
 
   constructor(private http: HttpClient ){}
+  username?: string; 
 
   checkValidationCredentials(username:string, password:string ){
     const UserModel = {
       username: username,
       password: password
     }
-
-    return this.http.post<boolean>("http://localhost:8080/login", JSON.stringify(UserModel), {
+    this.username=username;
+    return this.http.post<boolean>("http://localhost:8080/api/users/verify", JSON.stringify(UserModel), {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -25,7 +26,7 @@ export class ApiServiceService {
   }
 
   getLoginUserData(){
-    return this.http.get<User>("http://localhost:8080/home");
+    return this.http.get<User>(`http://localhost:8080/api/users/${this.username}`);
   }
 
   registerUsers(firstName: string, lastName:string, username:string, password:string, email:string){
@@ -37,7 +38,8 @@ export class ApiServiceService {
         email:email
     }
 
-    return this.http.post<boolean>("http://localhost:8080/sign-up",JSON.stringify(userBody),{
+    this.username=username;
+    return this.http.post<boolean>("http://localhost:8080/api/users",JSON.stringify(userBody),{
       headers: {
         'Content-type':'application/json',
       }
